@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.rest.springboot.controllers.PersonController;
 import br.com.rest.springboot.data.vo.v1.PersonVO;
+import br.com.rest.springboot.exceptions.RequiredObjectIsNullException;
 import br.com.rest.springboot.exceptions.ResourceNotFoundException;
 import br.com.rest.springboot.mapper.DozerMapper;
 import br.com.rest.springboot.model.Person;
@@ -50,6 +51,9 @@ public class PersonService {
 	}
 	
 	public PersonVO create(PersonVO personVO) throws Exception { //getting from bodyRequest
+		
+		if(personVO == null) throw new RequiredObjectIsNullException(); 
+		
 		logger.info("PersonVO created!");
 		
 		//Converting from VO to Person
@@ -62,6 +66,8 @@ public class PersonService {
 	}
 	
 	public PersonVO update(PersonVO personVO) throws Exception { //getting from bodyRequest
+		
+		if(personVO == null) throw new RequiredObjectIsNullException(); 
 		
 		var entity = repository.findById(personVO.getPk())
 				.orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
