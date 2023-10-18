@@ -1,12 +1,17 @@
 package br.com.rest.springboot.services;
 
 
-import java.util.List;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PagedResourcesAssembler;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.PagedModel;
 import org.springframework.stereotype.Service;
 
 import br.com.rest.springboot.controllers.PersonController;
@@ -25,22 +30,56 @@ public class PersonService {
 	
 	@Autowired
 	PersonRepository repository;
+	
+	@Autowired
+	PagedResourcesAssembler<PersonVO> assembler;
 
-	public List<PersonVO> findAll() {
+	public PagedModel<EntityModel<PersonVO>> findAll(Pageable pageable) {
 
 		logger.info("Finding all people!");
+		
+		var personPage = repository.findAll(pageable);
+		
+		var personVOSPage = personPage.map( p -> DozerMapper.parseObject(p, PersonVO.class));
+		
+		var personVOPageWithHATEOAS = personVOSPage.map(p -> {
+			try {
+				return p.add(linkTo(methodOn(PersonController.class)
+						.findById(p.getPk())).withSelfRel());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return p;
+		});
 
-		var persons = DozerMapper.parseListObjects(repository.findAll(), PersonVO.class);
-		persons
-			.stream()
-			.forEach(p -> {
-				try {
-					p.add(linkTo(methodOn(PersonController.class).findById(p.getPk())).withSelfRel());
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			});
-		return persons;
+		Link link = linkTo(methodOn(PersonController.class)
+				.findAll(pageable.getPageNumber(), pageable.getPageSize(), "asc")).withSelfRel();
+		
+		return assembler.toModel(personVOPageWithHATEOAS, link);
+	}
+	
+	public PagedModel<EntityModel<PersonVO>> findPersonByName(String firstName, Pageable pageable) {
+		
+		logger.info("Finding all people!");
+		
+		var personPage = repository.findPersonByName(firstName, pageable);
+		
+		var personVOSPage = personPage.map( p -> DozerMapper.parseObject(p, PersonVO.class));
+		
+		var personVOPageWithHATEOAS = personVOSPage.map(p -> {
+			try {
+				return p.add(linkTo(methodOn(PersonController.class)
+						.findById(p.getPk())).withSelfRel());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return p;
+		});
+		
+		Link link = linkTo(methodOn(PersonController.class)
+				.findAll(pageable.getPageNumber(), pageable.getPageSize(), "asc")).withSelfRel();
+		
+		return assembler.toModel(personVOPageWithHATEOAS, link);
 	}
 
 	public PersonVO findById(Long id) throws Exception {

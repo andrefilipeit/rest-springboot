@@ -7,11 +7,17 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PagedResourcesAssembler;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.PagedModel;
 import org.springframework.stereotype.Service;
 
 import br.com.rest.springboot.controllers.BookController;
 import br.com.rest.springboot.controllers.PersonController;
 import br.com.rest.springboot.data.vo.v1.BookVO;
+import br.com.rest.springboot.data.vo.v1.PersonVO;
 import br.com.rest.springboot.exceptions.RequiredObjectIsNullException;
 import br.com.rest.springboot.exceptions.ResourceNotFoundException;
 import br.com.rest.springboot.mapper.DozerMapper;
@@ -26,6 +32,9 @@ public class BookService {
 	@Autowired
 	BookRepository repository;
 	
+	@Autowired
+	PagedResourcesAssembler<BookVO> assembler;
+	
 	public BookVO findById(Long id) throws Exception {
 		logger.info("Finding one BookVO!");
 		var entity = repository.findById(id)
@@ -36,8 +45,23 @@ public class BookService {
 		return vo;
 	}
 	
-	public List<BookVO> findAll() {
+	public PagedModel<EntityModel<BookVO>> findAll(Pageable pageable) {
+		
 		logger.info("Finding a list of BookVO!");
+		
+		var bookPage = repository.findAll(pageable);
+		
+		var bookVOSPage = bookPage.map(b -> DozerMapper.parseObject(b, BookVO.class));
+		
+		var bookVOPageWithHATEOAS = bookVOSPage.map(b -> {
+			try {
+				return b.add(linkTo(methodOn(BookController.class).findById(b.getPk())).withSelfRel());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return b;
+		});
+		
 		var books = DozerMapper.parseListObjects(repository.findAll(), BookVO.class);
 		books.
 			stream().
@@ -49,7 +73,10 @@ public class BookService {
 				}
 			});
 		
-		return books;
+		Link link = linkTo(methodOn(BookController.class)
+				.findAll(pageable.getPageNumber(), pageable.getPageSize(), "asc")).withSelfRel();
+		
+		return assembler.toModel(bookVOPageWithHATEOAS, link);
 	}
 	
 	public BookVO create(BookVO bookVO) throws Exception { //getting from bodyRequest
