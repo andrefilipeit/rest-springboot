@@ -3,6 +3,8 @@ server:
   port: 8080
 cors:
   originPatterns: http://localhost:3000,http://localhost:8080,https://andrefilipeos.com.br
+file: #for upload files
+  upload-dir: C:/springboot-rest-dir
 #JWT Security
 security:
   jwt:
@@ -23,6 +25,13 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
     show-sql: false #true only for debugging mode
+  servlet: #for upload files
+    multipart: 
+      enabled: true
+      file-size-threshold: 2KB
+      max-file-size: 200MB
+      max-request-size: 215MB
+          
 springdoc:
   pathsToMatch: #for swagger api
     -  /api/**/v1/**
