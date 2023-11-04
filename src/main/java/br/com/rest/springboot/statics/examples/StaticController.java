@@ -1,4 +1,4 @@
-package br.com.rest.springboot;
+package br.com.rest.springboot.statics.examples;
 
 import java.util.concurrent.atomic.AtomicLong;
 

@@ -1,4 +1,4 @@
-package br.com.rest.springboot;
+package br.com.rest.springboot.statics.examples;
 
 public class Greeting {
 
