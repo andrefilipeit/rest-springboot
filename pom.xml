@@ -12,23 +12,23 @@
 	<artifactId>rest-springboot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>rest-springboot</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Complete RestFul Java Project</description>
 	<properties>
 		<java.version>20</java.version>
 	</properties>
 	<dependencies>
-		<dependency>
+		<dependency> <!--Inicial project Dependency -->
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<dependency>
+		<dependency> <!--Inicial project Dependency -->
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
-		<dependency>
+		<dependency> <!--Inicial project Dependency -->
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
