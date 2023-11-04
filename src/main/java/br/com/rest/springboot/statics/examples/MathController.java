@@ -1,4 +1,4 @@
-package br.com.rest.springboot;
+package br.com.rest.springboot.statics.examples;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
