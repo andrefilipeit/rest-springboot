@@ -15,6 +15,7 @@
 	<description>Complete RestFul Java Project</description>
 	<properties>
 		<java.version>20</java.version>
+		<dozer.version>6.4.0</dozer.version>
 	</properties>
 	<dependencies>
 		<dependency> <!--Inicial project Dependency -->
@@ -42,6 +43,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		
+		<dependency> <!--Model Mapping (Dozer) -->
+			<groupId>com.github.dozermapper</groupId>
+			<artifactId>dozer-core</artifactId>
+			<version>${dozer.version}</version>
 		</dependency>
 		
 	</dependencies>
