@@ -51,6 +51,17 @@
 			<version>${dozer.version}</version>
 		</dependency>
 		
+		<dependency> <!-- flyway -->
+		<!-- for more: https://documentation.red-gate.com/fd/ & https://www.martinfowler.com/articles/evodb.html -->
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+		</dependency>
+		
+		<dependency> <!-- flyway for mysql-->
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-mysql</artifactId>
+		</dependency>
+		
 	</dependencies>
 
 	<build>
