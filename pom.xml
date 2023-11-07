@@ -62,6 +62,16 @@
 			<artifactId>flyway-mysql</artifactId>
 		</dependency>
 		
+		<dependency> <!-- Content Negotiation -->
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-xml</artifactId>
+		</dependency>
+		<dependency> <!-- Content Negotiation -->
+		<!-- for more: https://en.wikipedia.org/wiki/YAML -->
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-yaml</artifactId>
+		</dependency>
+		
 	</dependencies>
 
 	<build>
