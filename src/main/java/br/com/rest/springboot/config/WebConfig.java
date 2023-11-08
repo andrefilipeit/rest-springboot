@@ -1,4 +1,4 @@
-package br.com.rest.springboot.config.content.negotiation;
+package br.com.rest.springboot.config;
 
 import java.util.List;
 
@@ -8,6 +8,7 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+//Content negotiation Config
 @Configuration //when springboot is loading read this class
 public class WebConfig implements WebMvcConfigurer{
 
