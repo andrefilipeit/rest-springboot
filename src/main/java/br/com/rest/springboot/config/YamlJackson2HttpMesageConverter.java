@@ -1,5 +1,6 @@
-package br.com.rest.springboot.config.content.negotiation;
+package br.com.rest.springboot.config;
 
+//Content negotiation Config
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter;
 
