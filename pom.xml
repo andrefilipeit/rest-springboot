@@ -51,8 +51,7 @@
 			<version>${dozer.version}</version>
 		</dependency>
 		
-		<dependency> <!-- flyway -->
-		<!-- for more: https://documentation.red-gate.com/fd/ & https://www.martinfowler.com/articles/evodb.html -->
+		<dependency> <!-- flyway for more: https://documentation.red-gate.com/fd/ & https://www.martinfowler.com/articles/evodb.html-->
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-core</artifactId>
 		</dependency>
@@ -66,10 +65,14 @@
 			<groupId>com.fasterxml.jackson.dataformat</groupId>
 			<artifactId>jackson-dataformat-xml</artifactId>
 		</dependency>
-		<dependency> <!-- Content Negotiation -->
-		<!-- for more: https://en.wikipedia.org/wiki/YAML -->
+		<dependency> <!-- Content Negotiation for more: https://en.wikipedia.org/wiki/YAML-->
 			<groupId>com.fasterxml.jackson.dataformat</groupId>
 			<artifactId>jackson-dataformat-yaml</artifactId>
+		</dependency>
+		
+		<dependency> <!-- HATEOAS for more: https://docs.spring.io/spring-hateoas/docs/current/reference/html/-->
+			<groupId>org.springframework.hateoas</groupId>
+			<artifactId>spring-hateoas</artifactId>
 		</dependency>
 		
 	</dependencies>
