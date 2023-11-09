@@ -1,4 +1,6 @@
 #Changed the file type to .yml  for new technologies
+cors: #Global CORS
+  originPatterns: http://localhost:3000,http://localhost:8080,https://afos.com.br
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
