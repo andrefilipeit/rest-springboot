@@ -7,7 +7,6 @@ import org.springframework.hateoas.RepresentationModel;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.github.dozermapper.core.Mapping;
 
 @JsonPropertyOrder({"id", "address", "first_name", "last_name", "gender"})
 public class PersonVO extends RepresentationModel<PersonVO> implements Serializable {
