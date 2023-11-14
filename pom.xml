@@ -94,7 +94,12 @@
 			<artifactId>java-jwt</artifactId>
 			<version>${java-jwt.version}</version>
 		</dependency>
-		
+
+		<dependency> <!-- File Upload -->
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
 	</dependencies>
 
 	<build>
