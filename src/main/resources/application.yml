@@ -1,4 +1,6 @@
 #Changed the file type to .yml  for new technologies
+server:
+  port: 80
 cors: #Global CORS
   originPatterns: http://localhost:3000,http://localhost:8080,https://afos.com.br
 file:
@@ -31,5 +33,6 @@ springdoc:
   pathsToMatch: 
     - /**/v1 #/api/**/v1/**
     - /auth/**
+    - /file/**
   swagger-ui:
     use-root-path: true

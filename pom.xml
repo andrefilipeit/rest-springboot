@@ -77,7 +77,7 @@
 			<artifactId>spring-hateoas</artifactId>
 		</dependency>
 		
-		<dependency> <!-- Swagger http://localhost:8080/v3/api-docs & http://localhost:8080/swagger-ui.html-->
+		<dependency> <!-- Swagger http://localhost:8080/v3/api-docs & http://localhost:8080/swagger-ui/index.html-->
 			<!-- for more: https://lankydan.dev/documenting-a-spring-rest-api-following-the-openapi-specification-->
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>

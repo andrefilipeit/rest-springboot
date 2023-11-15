@@ -1,5 +1,7 @@
 package br.com.rest.springboot.services;
 
+import java.util.logging.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -25,6 +27,9 @@ public class AuthServices {
 	@Autowired
 	private UserRepository repository;
 	
+	//Logger for resolve docker problems
+	private Logger logger = Logger.getLogger(AuthServices.class.getName());
+	
 	@SuppressWarnings("rawtypes")
 	public ResponseEntity signin(AccountCredentialsVO data) {
 		try {
@@ -35,14 +40,21 @@ public class AuthServices {
 			
 			var user = repository.findByUsername(username);
 			
+			logger.info("user recovered: " + user);
+			
 			var tokenResponse = new TokenVO();
 			if (user != null) {
 				tokenResponse = tokenProvider.createAccessToken(username, user.getRoles());
+				logger.info("Access Token response: " + tokenResponse.getAccessToken());
+				logger.info("UserName Token response: " + tokenResponse.getUsername());
 			} else {
+				logger.info("UsernameNotFoundException");
 				throw new UsernameNotFoundException("Username " + username + " not found!");
 			}
 			return ResponseEntity.ok(tokenResponse);
 		} catch (Exception e) {
+			logger.info("BadCredentialsException");
+			logger.info("Exception: " + e);
 			throw new BadCredentialsException("Invalid username/password supplied!");
 		}
 	}
