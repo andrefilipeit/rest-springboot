@@ -33,3 +33,19 @@ Spring Boot DevTools - For LiveReload
 #Database Config
 user:root
 pass:admin123
+
+
+
+Docker commands
+
+docker compose up -d --build -> from docker-compose.yml file path
+docker compose ls -> for list execution apps
+docker ps -> for list containers in execution
+docker logs 'id log recovered in docker ps', example: docker logs e23bvd -> for full log from creating container app
+docker login/logout
+docker images
+docker push [id image]
+
+
+
+[![Docker Hub Repo](https://img.shields.io/docker/pulls/DOCKER_HUB_USERNAME/RESPOSITORY_NAME.svg)](https://hub.docker.com/repository/docker/andrefilipeit/rest-springboot)

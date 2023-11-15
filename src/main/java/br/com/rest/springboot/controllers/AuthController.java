@@ -1,5 +1,7 @@
 package br.com.rest.springboot.controllers;
 
+import java.util.logging.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +25,9 @@ public class AuthController {
 
 	@Autowired
 	AuthServices authServices;
+	
+	//logger for docker problem
+	private Logger logger = Logger.getLogger(AuthController.class.getName());
 	
 	@SuppressWarnings("rawtypes")
 	@Operation(summary = "Authenticates a user and returns a token")
