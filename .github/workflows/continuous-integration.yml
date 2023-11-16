@@ -35,12 +35,12 @@ jobs:
         cache: maven
     - name: Build Application JAR With Maven
       #working-directory -> path to pom.xml for maven
-      working-directory: ./rest-springboot
+      working-directory: ./
       run: mvn clean package -DSkipTests
       
     - name: Docker Compose Build
       #working-directory -> path to docker-compose.yml for docker build
-      working-directory: ./rest-springboot
+      working-directory: ./
       run: docker compose build
 
     - name: Push to Docker Hub Container Registry
