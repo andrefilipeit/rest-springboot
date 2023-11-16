@@ -11,12 +11,11 @@ name: Continuous-Integration with Github Actions
 on:
   push:
     branches:
-      - main
+      - develop
       - newBranch2
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -36,12 +35,12 @@ jobs:
         cache: maven
     - name: Build Application JAR With Maven
       #working-directory -> path to pom.xml for maven
-      working-directory: ./ 
+      working-directory: ./rest-springboot
       run: mvn clean package -DSkipTests
       
     - name: Docker Compose Build
       #working-directory -> path to docker-compose.yml for docker build
-      working-directory: ./
+      working-directory: ./rest-springboot
       run: docker compose build
 
     - name: Push to Docker Hub Container Registry
