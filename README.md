@@ -1,51 +1,52 @@
 # rest-springboot
 REST API's RESTFul - Spring Boot 3 Java and Docker
 
-JAVA 18
+## Requirements
 
-MAVEN 3.6.0
-
-Spring tools suite 4.19.0   (https://spring.io/tools)  and extract using java -jar jarDowloaded.jar
-
-MySQL Server download 8.0.34 - https://dev.mysql.com/downloads/installer/ 
-On Workbench access Installed server by credencials.
-
-Can you use HeidiSQL 12.5.0 https://www.heidisql.com/download.php?download=installer#google_vignette
-
-Postman - https://www.postman.com/downloads/
-
-
-Download Docker - https://www.docker.com/products/docker-desktop/
-Problem solved:  https://www.youtube.com/watch?v=zvnFtNlD1eo
-Problem -docker  info- solved: https://stackoverflow.com/questions/57460393/the-docker-client-must-be-run-elevated-to-connect#:~:text=This%20error%20may%20also%20indicate,Anything%20else%20I%20can%20do%20%3F&text=Go%20to%20the%20directory%20where,if%20it%20solves%20the%20problem.
-
-
-[Spring](https://start.spring.io)Spring Initializr to create project or SpringToolsSuite > new Spring Starter Project > the name is the same that github repository
-[SpringToolSuite] File > New > Spring Starter Project (name may be same repo name folder) > Artifact > equals (repeat it)
-
-Spring boot version 3.0.0 or above runs with Java 17 or more recent version.
-
-Spring Project Dependencies:
-Spring Web
-Spring Boot DevTools - For LiveReload
-
-
-#Database Config
-user:root
-pass:admin123
+| Technologies Used                       | Version |
+| ---                                     | ---       |
+| `Java 20`                               | [download](https://www.oracle.com/java/technologies/javase/jdk20-archive-downloads.html)  |
+| `MAVEN 3.6.0`                           | [download](https://maven.apache.org/download.cgi) |
+| `Spring Tools Suite 4.19.0`             | [download](https://spring.io/tools) |
+| `MySQL Server Installer (MSI) 8.0.34`   | [download](https://dev.mysql.com/downloads/installer) |
+| `MySQL Workbench `                      | [download](https://dev.mysql.com/downloads/workbench/)|
+| `HeidiSQL 12.5.0`                       | [download](https://www.heidisql.com/download.php?download=installer#google_vignette)|
+| `Postman`   | [download](https://www.postman.com/downloads/) |
+| `Docker`   | [download](https://www.docker.com/products/docker-desktop/) |
 
 
 
-Docker commands
+:bulb: Download Spring Tools Suite and extract using: ```> java -jar pathJarDowloadedName.jar```
 
-docker compose up -d --build -> from docker-compose.yml file path
-docker compose ls -> for list execution apps
-docker ps -> for list containers in execution
-docker logs 'id log recovered in docker ps', example: docker logs e23bvd -> for full log from creating container app
-docker login/logout
-docker images
-docker push [id image]
 
+:exclamation: [Possible problem 1](https://www.youtube.com/watch?v=zvnFtNlD1eo)  
+:exclamation: [Possible problem 2 '-docker  info-'
+](https://stackoverflow.com/questions/57460393/the-docker-client-must-be-run-elevated-to-connect#:~:text=This%20error%20may%20also%20indicate,Anything%20else%20I%20can%20do%20%3F&text=Go%20to%20the%20directory%20where,if%20it%20solves%20the%20problem)  
+
+## Starting
+
+Project created with [Spring Initializr](https://start.spring.io),
+but for create local project on SpringToolsSuite use:
+Spring Starter Project (name equals git repo folder name) ```> Artifact > equals (repeat it)```
+
+Initial Dependencies: <br />
+[Spring Web](https://mvnrepository.com/artifact/org.springframework/spring-web) <br />
+[Spring Boot DevTools](https://docs.spring.io/spring-boot/docs/1.5.16.RELEASE/reference/html/using-boot-devtools.html)
+
+
+## Database Config
+user: root/docker <br /> [see more:](https://github.com/andrefilipeit/rest-springboot/blob/develop/src/main/resources/application.yml)
+pass: admin123
+
+Helpful Docker Commands:
+
+  * docker compose up -d --build -> from docker-compose.yml file path
+  * docker compose ls -> for list execution apps
+  * docker ps -> for list containers in execution
+  * docker logs 'id log recovered in docker ps', example: docker logs e23bvd -> for full log from creating container app
+  * docker login/logout
+  * docker images
+  * docker push [id image]
 
 
 [![Docker Hub Repo](https://img.shields.io/docker/pulls/DOCKER_HUB_USERNAME/RESPOSITORY_NAME.svg)](https://hub.docker.com/repository/docker/andrefilipeit/rest-springboot)
