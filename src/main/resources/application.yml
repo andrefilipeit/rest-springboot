@@ -14,8 +14,9 @@ security:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3308/db_rest_springboot?useTimezone=true&serverTimezone=UTC
-    username: root #username for aws application
+    url: jdbc:mysql://localhost:3306/db_rest_springboot?useTimezone=true&serverTimezone=UTC
+    #see more about app location on docker-compose.yml if needs set to other app location
+    username: root 
     password: admin123
   jpa:
     hibernate:
